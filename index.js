@@ -1,11 +1,11 @@
-const express = require('express');
+const express = require('express'),
+	bodyParser = require('body-parser'),
+	universityRouter = require('./Routers/universityRouter');
 require('./DataBase/DB');
-const bodyParser = require('body-parser');
-const universityRouter = require('./Routers/universityRouter');
 
 // APP CONFIG
-const app = express();
-const port = process.env.PORT || 3000;
+const app = express(),
+	port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
