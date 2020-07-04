@@ -38,5 +38,5 @@ app.use('*', (req, res) => {
 	});
 });
 app.listen(port, () => {
-	console.log('Server is listening');
+	console.log('Server is listening ' + port);
 });

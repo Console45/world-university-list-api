@@ -16,23 +16,23 @@ router.get('/universities', async (req, res) => {
 		if (!(req.query.name || req.query.country)) return res.redirect('/index');
 		// name search
 		if (req.query.name && !req.query.country) {
-			const regexName = new RegExp(escapeRegex(req.query.name), 'gi');
-			const universities = await University.find({ name: regexName });
+			const regexName = new RegExp(escapeRegex(req.query.name), 'gi'),
+				universities = await University.find({ name: regexName });
 			if (universities.length === 0) return res.status(404).send({ error: 'No university found' });
 			res.send(universities);
 		}
 		// country search
 		if (req.query.country && !req.query.name) {
-			const regexCountry = new RegExp(escapeRegex(req.query.country), 'gi');
-			const universities = await University.find({ country: regexCountry });
+			const regexCountry = new RegExp(escapeRegex(req.query.country), 'gi'),
+				universities = await University.find({ country: regexCountry });
 			if (universities.length === 0) return res.status(404).send({ error: 'No university found' });
 			res.send(universities);
 		}
 		// search by name and country
 		if (req.query.name && req.query.country) {
-			const regexName = new RegExp(escapeRegex(req.query.name), 'gi');
-			const regexCountry = new RegExp(escapeRegex(req.query.country), 'gi');
-			const universities = await University.find({ name: regexName, country: regexCountry });
+			const regexName = new RegExp(escapeRegex(req.query.name), 'gi'),
+				regexCountry = new RegExp(escapeRegex(req.query.country), 'gi'),
+				universities = await University.find({ name: regexName, country: regexCountry });
 			if (universities.length === 0) return res.status(404).send({ error: 'No university found' });
 			res.send(universities);
 		}
