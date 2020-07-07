@@ -3,7 +3,7 @@ const express = require("express"),
   universityRouter = require("./Routers/universityRouter"),
   University = require("./dataBase/Model/UniversityModel");
 
-require("./DataBase/DB");
+require("./dataBase/DB");
 
 // APP CONFIG
 const app = express(),
